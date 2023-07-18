@@ -22,19 +22,7 @@ public class TicketServiceImpl implements TicketService{
         return ticketRepository.findAllByOrderByIdAsc();
     }
 
-//    @Override
-//    public Ticket getTicketById(int theId){
-//        Optional<Ticket> result = ticketRepository.findById(theId);
-//
-//        Ticket theTicket = null;
-//        if(result.isPresent()) {
-//            theTicket = result.get();
-//        }
-//        else {
-//            throw new RuntimeException("Did not find ticket id - " + theId);
-//        }
-//        return theTicket;
-//    }
+
 @Override
 public Ticket getTicketById(int theId){
     Optional<Ticket> result = ticketRepository.findById(theId);

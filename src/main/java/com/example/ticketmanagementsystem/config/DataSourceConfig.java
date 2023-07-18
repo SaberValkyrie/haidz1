@@ -35,8 +35,6 @@ public class DataSourceConfig {
         return new UserServiceImpl(userRepository, bCryptPasswordEncoder);
     }
 
-
-
     @Bean
     @ConfigurationProperties(prefix = "spring.data.jpa.entity")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
