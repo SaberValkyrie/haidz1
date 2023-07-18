@@ -1,28 +1,35 @@
 package com.example.ticketmanagementsystem.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
-
+public class User {
     @Id
-    @Column(name = "username", unique = true, nullable = false, length = 100)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 68)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    public User() {
-    }
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 
-    public User(String username, String password) {
+    @Column(name = "isAdmin", nullable = false)
+    private boolean isAdmin;
+
+    public User() {
+        // Mặc định giá trị cho enabled là true (1) khi tạo mới đối tượng User
+        this.enabled = true;
+    }
+    public User(String username, String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
+        this.enabled = true; // Mặc định giá trị cho enabled là true (1) khi tạo mới đối tượng User
+        this.isAdmin = isAdmin;
     }
-
-    // Getters and setters
 
     public String getUsername() {
         return username;
@@ -33,10 +40,26 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
-        return  password;
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
